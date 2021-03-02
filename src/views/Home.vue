@@ -1,19 +1,74 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
+    <form v-on:submit.prevent="submit()">
+      <h2>Signup</h2>
+      <ul>
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">
+          {{ error }}
+        </li>
+      </ul>
+      <div class="form-group">
+        <label>Name:</label>
+        <input type="text" class="form-control" v-model="name" />
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" class="form-control" v-model="email" />
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="password" class="form-control" v-model="password" />
+      </div>
+      <div class="form-group">
+        <label>Password confirmation:</label>
+        <input
+          type="password"
+          class="form-control"
+          v-model="passwordConfirmation"
+        />
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+    <router-link to="/login">Login</router-link>
   </div>
 </template>
 
 <style></style>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
+      message: "Your Journey to Taking Control of Your Pain",
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+      errors: [],
     };
   },
   created: function() {},
-  methods: {},
+  methods: {
+    submit: function() {
+      var params = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.passwordConfirmation,
+      };
+      axios
+        .post("/api/users", params)
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
+  },
 };
 </script>
