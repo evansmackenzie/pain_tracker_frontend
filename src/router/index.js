@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
-import UserShow from "../views/UserShow.vue";
+import UsersShow from "../views/UserShow.vue";
 
 Vue.use(VueRouter);
 
@@ -26,7 +26,7 @@ const routes = [
   {
     path: "/users/:id",
     name: "UserShow",
-    component: UserShow
+    component: UsersShow
   }
 ];
 

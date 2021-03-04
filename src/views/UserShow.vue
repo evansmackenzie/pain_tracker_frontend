@@ -1,6 +1,9 @@
 <template>
   <div class="UserShow">
-    <p>hello</p>
+    <div></div>
+    <p>Name: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Variables: {{ user.variables }}</p>
   </div>
 </template>
 
@@ -10,21 +13,21 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      post: {},
+      user: {},
     };
   },
   created: function() {
-    axios.get(`/api/posts/${this.$route.params.id}`).then((response) => {
+    axios.get(`/api/users/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
-      this.post = response.data;
+      this.user = response.data;
     });
   },
   methods: {
     postDestroy: function() {
-      if (confirm("Are you sure you want to delete this recipe?")) {
-        axios.delete(`/api/posts/${this.$route.params.id}`).then((response) => {
+      if (confirm("Are you sure you want to delete this user?")) {
+        axios.delete(`/api/users/${this.$route.params.id}`).then((response) => {
           console.log(response.data);
-          this.$router.push("/posts");
+          this.$router.push("/users");
         });
       }
     },
