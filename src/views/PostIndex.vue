@@ -5,6 +5,7 @@
     <div v-for="post in posts" v-bind:key="post.id">
       <p>written {{ post.created_at }}</p>
       <p>{{ post.body }}</p>
+      <router-link :to="`posts/${post.id}`">More Info</router-link>
     </div>
   </div>
 </template>
@@ -24,15 +25,6 @@ export default {
       this.posts = response.data;
     });
   },
-  methods: {
-    postDestroy: function() {
-      if (confirm("Are you sure you want to delete this user?")) {
-        axios.delete(`/api/users/${this.$route.params.id}`).then((response) => {
-          console.log(response.data);
-          this.$router.push("/users");
-        });
-      }
-    },
-  },
+  methods: {},
 };
 </script>
