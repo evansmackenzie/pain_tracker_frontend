@@ -3,8 +3,8 @@
     <h1>My Pain Journal</h1>
     <router-link to="/posts/new">Create Journal Entry</router-link>
     <div v-for="post in posts" v-bind:key="post.id">
-      <p>{{ post.body }}</p>
       <p>written {{ post.created_at }}</p>
+      <p>{{ post.body }}</p>
     </div>
   </div>
 </template>

@@ -6,6 +6,7 @@ import Logout from "../views/Logout.vue";
 import UsersShow from "../views/UserShow.vue";
 import PostsIndex from "../views/PostIndex.vue";
 import PostsNew from "../views/PostNew.vue";
+import UsersEdit from "../views/UserEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ const routes = [
     name: "PostNew",
     component: PostsNew
   },
+  {
+    path: "/users/:id/edit",
+    name: "UserEdit",
+    component: UsersEdit
+  }
 ];
 
 const router = new VueRouter({
