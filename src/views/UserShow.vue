@@ -1,5 +1,6 @@
 <template>
   <div class="UserShow">
+    <router-link to="/posts">Journal</router-link>
     <div></div>
     <p>Name: {{ user.name }}</p>
     <img v-bind:src="user.image_url" alt="" />

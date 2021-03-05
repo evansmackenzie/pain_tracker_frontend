@@ -3,6 +3,7 @@
     <h1>{{ message }}</h1>
     <form v-on:submit.prevent="submit()">
       <h2>Signup</h2>
+      <router-link to="/login">Login</router-link>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
@@ -30,7 +31,6 @@
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
-    <router-link to="/login">Login</router-link>
   </div>
 </template>
 
