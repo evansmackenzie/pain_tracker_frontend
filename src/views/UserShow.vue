@@ -26,7 +26,22 @@
           <input type="submit" class="btn btn-primary" value="Submit" />
         </form>
       </div>
+      <button v-on:click="variableDestroy(variable)">
+        Delete Variable
+      </button>
     </div>
+    <form v-on:submit.prevent="variableNew()">
+      <ul>
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">
+          {{ error }}
+        </li>
+      </ul>
+      <div class="form-group">
+        <label>Create New Variable:</label>
+        <input type="text" class="form-control" v-model="newVariable" /> <br />
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
   </div>
 </template>
 
@@ -42,6 +57,8 @@ export default {
       value: "",
       errors: [],
       variableEntryFormToggle: null,
+      newVariable: "",
+      message: "",
     };
   },
   created: function() {
@@ -52,11 +69,16 @@ export default {
     });
   },
   methods: {
-    postDestroy: function() {
-      if (confirm("Are you sure you want to delete this user?")) {
-        axios.delete(`/api/users/${this.$route.params.id}`).then((response) => {
+    variableDestroy: function(variable) {
+      if (
+        confirm(
+          "Are you sure you want to delete this variable and all of the entries associated with it?"
+        )
+      ) {
+        axios.delete(`/api/variables/${variable.id}`).then((response) => {
           console.log(response.data);
-          this.$router.push("/users");
+          this.message = response.data;
+          this.$router.push("/");
         });
       }
     },
@@ -70,6 +92,26 @@ export default {
         .post("/api/entries", params)
         .then((response) => {
           console.log(response.data);
+          this.value = "";
+          this.variableEntryFormToggle = null;
+          // this.$router.push(`users/${response.data.variable.user}`);
+        })
+        .catch((error) => {
+          this.status = error.response.status;
+          this.errors = error.response.data.errors;
+        });
+    },
+    variableNew: function() {
+      var params = {
+        name: this.newVariable,
+        // user_id: this.userId,
+      };
+      axios
+        .post("/api/variables", params)
+        .then((response) => {
+          console.log(response.data);
+          this.variables.push(response.data);
+          this.newVariable = "";
           // this.$router.push(`users/${response.data.variable.user}`);
         })
         .catch((error) => {

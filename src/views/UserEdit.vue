@@ -8,23 +8,28 @@
         </li>
       </ul>
       <div class="form-group">
-        <label>Title:</label>
-        <input type="text" class="form-control" v-model="post.title" />
+        <label>Name:</label>
+        <input type="text" class="form-control" v-model="user.name" />
       </div>
       <div class="form-group">
-        <label>Body:</label>
-        <input type="text" class="form-control" v-model="post.body" />
+        <label>Email:</label>
+        <input type="text" class="form-control" v-model="user.email" />
       </div>
       <div class="form-group">
         <label>Image:</label>
-        <input type="text" class="form-control" v-model="post.image" />
+        <input type="text" class="form-control" v-model="user.image_url" />
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="text" class="form-control" v-model="user.password" />
       </div>
       <!-- <div class="form-group">
         <label>User Id:</label>
-        <input type="text" class="form-control" v-model="post.userId">
+        <input type="text" class="form-control" v-model="user.userId">
       </div> -->
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
+    <button v-on:click="userDestroy()">Delete Profile</button>
   </div>
 </template>
 
@@ -47,20 +52,33 @@ export default {
   methods: {
     userEdit: function() {
       var params = {
-        title: this.user.title,
-        body: this.user.body,
-        image: this.user.image,
+        name: this.user.name,
+        email: this.user.email,
+        image_url: this.user.image_url,
+        password: this.user.password,
         // user_id: this.post.userId,
       };
       axios
         .patch(`/api/users/${this.$route.params.id}`, params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push(`users/${response.data.user_id}`);
+          this.$router.push(`/`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
+    },
+    userDestroy: function() {
+      if (
+        confirm(
+          "Are you sure you want to delete your profile and all of your tracking?"
+        )
+      ) {
+        axios.delete(`/api/users/${this.$route.params.id}`).then((response) => {
+          console.log(response.data);
+          this.$router.push("/");
+        });
+      }
     },
   },
 };
