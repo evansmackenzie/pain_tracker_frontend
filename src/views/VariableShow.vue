@@ -1,12 +1,12 @@
 <template>
   <div class="VariableShow">
-    <div>
+    <!-- <div>
       <h2>{{ variable.name }}</h2>
       <div v-for="entry in variable.entries" v-bind:key="entry.id">
         <p>value: {{ entry.value }}</p>
         <p>created: {{ relativeDate(entry.created_at) }}</p>
       </div>
-    </div>
+    </div> -->
     <div>
       <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
     </div>
@@ -19,36 +19,7 @@ import moment from "moment";
 // import Highcharts from "highcharts";
 // import HighchartsVue from "highcharts-vue";
 import { Chart } from "highcharts-vue";
-// Vue.use(HighchartsVue);
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   const chart = Highcharts.chart("container", {
-//     chart: {
-//       type: "bar",
-//     },
-//     title: {
-//       text: "Fruit Consumption",
-//     },
-//     xAxis: {
-//       categories: ["Apples", "Bananas", "Oranges"],
-//     },
-//     yAxis: {
-//       title: {
-//         text: "Fruit eaten",
-//       },
-//     },
-//     series: [
-//       {
-//         name: "Jane",
-//         data: [1, 0, 4],
-//       },
-//       {
-//         name: "John",
-//         data: [5, 7, 3],
-//       },
-//     ],
-//   });
-// });
+// Vue.use(HighchartsVue)
 
 export default {
   components: {
@@ -58,6 +29,33 @@ export default {
     return {
       variable: {},
       chartOptions: {
+        title: {
+          text: "Monthly Average Temperature",
+        },
+        subtitle: {
+          text: "Source: WorldClimate.com",
+        },
+        xAxis: {
+          categories: [
+            "Mon",
+            "Tues",
+            "Wed",
+            "Thurs",
+            "Fri",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+        },
+        yAxis: {
+          title: {
+            text: "Entry Value",
+          },
+        },
         plotOptions: {
           line: {
             dataLabels: {
@@ -84,38 +82,12 @@ export default {
       this.chartOptions.series[0].data = this.variable.entries.map(
         (entry) => entry.value
       );
+      this.chartOptions.title.text = this.variable.name;
+      this.chartOptions.xAxis.categories = this.variable.entries.map(
+        (entry) => entry.created_at
+      );
     });
   },
-  // mounted: function() {
-  //   document.addEventListener("DOMContentLoaded", function() {
-  //     const chart = Highcharts.chart("container", {
-  //       chart: {
-  //         type: "bar",
-  //       },
-  //       title: {
-  //         text: "Fruit Consumption",
-  //       },
-  //       xAxis: {
-  //         categories: ["Apples", "Bananas", "Oranges"],
-  //       },
-  //       yAxis: {
-  //         title: {
-  //           text: "Fruit eaten",
-  //         },
-  //       },
-  //       series: [
-  //         {
-  //           name: "Jane",
-  //           data: [1, 0, 4],
-  //         },
-  //         {
-  //           name: "John",
-  //           data: [5, 7, 3],
-  //         },
-  //       ],
-  //     });
-  //   });
-  // },
   methods: {
     relativeDate: function(date) {
       return moment(date).format("MMMM Do YYYY, h:mm:ss a");
