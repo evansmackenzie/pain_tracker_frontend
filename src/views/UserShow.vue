@@ -79,7 +79,7 @@ export default {
         axios.delete(`/api/variables/${variable.id}`).then((response) => {
           console.log(response.data);
           this.message = response.data;
-          this.$router.push(`/`);
+          // this.$router.push(`/`);
         });
       }
     },

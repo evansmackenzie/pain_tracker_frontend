@@ -16,16 +16,59 @@
 <script>
 import axios from "axios";
 import moment from "moment";
-import Highcharts from "highcharts";
-import exportingInit from "highcharts/modules/exporting";
+// import Highcharts from "highcharts";
+// import HighchartsVue from "highcharts-vue";
+import { Chart } from "highcharts-vue";
+// Vue.use(HighchartsVue);
 
-exportingInit(Highcharts);
+// document.addEventListener("DOMContentLoaded", function() {
+//   const chart = Highcharts.chart("container", {
+//     chart: {
+//       type: "bar",
+//     },
+//     title: {
+//       text: "Fruit Consumption",
+//     },
+//     xAxis: {
+//       categories: ["Apples", "Bananas", "Oranges"],
+//     },
+//     yAxis: {
+//       title: {
+//         text: "Fruit eaten",
+//       },
+//     },
+//     series: [
+//       {
+//         name: "Jane",
+//         data: [1, 0, 4],
+//       },
+//       {
+//         name: "John",
+//         data: [5, 7, 3],
+//       },
+//     ],
+//   });
+// });
 
 export default {
+  components: {
+    highcharts: Chart,
+  },
   data: function() {
     return {
       variable: {},
       chartOptions: {
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: true,
+            },
+            enableMouseTracking: false,
+          },
+        },
+        chart: {
+          type: "line",
+        },
         series: [
           {
             data: [1, 2, 3],
@@ -38,6 +81,9 @@ export default {
     axios.get(`/api/variables/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.variable = response.data;
+      this.chartOptions.series[0].data = this.variable.entries.map(
+        (entry) => entry.value
+      );
     });
   },
   // mounted: function() {
