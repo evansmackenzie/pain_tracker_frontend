@@ -9,6 +9,8 @@ import PostsNew from "../views/PostNew.vue";
 import UsersEdit from "../views/UserEdit.vue";
 import PostsShow from "../views/PostShow.vue";
 import PostsEdit from "../views/PostEdit";
+import VariablesIndex from "../views/VariableIndex";
+import VariablesShow from "../views/VariableShow";
 
 Vue.use(VueRouter);
 
@@ -27,6 +29,16 @@ const routes = [
     path: "/logout",
     name: "logout",
     component: Logout
+  },
+  {
+    path: "/variables",
+    name: "VariableIndex",
+    component: VariablesIndex
+  },
+  {
+    path: "/variables/:id",
+    name: "VariableShow",
+    component: VariablesShow
   },
   {
     path: "/users/:id",

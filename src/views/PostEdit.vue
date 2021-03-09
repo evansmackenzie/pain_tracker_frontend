@@ -44,10 +44,10 @@ export default {
         // user_id: this.post.userId,
       };
       axios
-        .patch(`/api/users/${this.$route.params.id}`, params)
+        .patch(`/api/posts/${this.$route.params.id}`, params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push(`/`);
+          this.$router.push(`/posts`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
@@ -55,9 +55,9 @@ export default {
     },
     postDestroy: function() {
       if (confirm("Are you sure you want to delete your post entry?")) {
-        axios.delete(`/api/users/${this.$route.params.id}`).then((response) => {
+        axios.delete(`/api/posts/${this.$route.params.id}`).then((response) => {
           console.log(response.data);
-          this.$router.push("/");
+          this.$router.push("/posts");
         });
       }
     },

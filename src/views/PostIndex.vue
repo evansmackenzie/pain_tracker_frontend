@@ -3,7 +3,7 @@
     <h1>My Pain Journal</h1>
     <router-link to="/posts/new">Create Journal Entry</router-link>
     <div v-for="post in posts" v-bind:key="post.id">
-      <p>written {{ post.created_at }}</p>
+      <p>written {{ relativeDate(post.created_at) }}</p>
       <p>{{ post.body }}</p>
       <router-link :to="`posts/${post.id}`">More Info</router-link>
     </div>
@@ -12,6 +12,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 
 export default {
   data: function() {
@@ -25,6 +26,10 @@ export default {
       this.posts = response.data;
     });
   },
-  methods: {},
+  methods: {
+    relativeDate: function(date) {
+      return moment(date).format("MMMM Do YYYY, h:mm:ss a");
+    },
+  },
 };
 </script>

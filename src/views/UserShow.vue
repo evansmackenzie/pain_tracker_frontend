@@ -6,7 +6,7 @@
     <img v-bind:src="user.image_url" alt="" />
     <p>Email: {{ user.email }}</p>
     <router-link :to="`/users/${user.id}/edit`">Edit</router-link>
-    <p>Variables:</p>
+    <h2>Variables:</h2>
     <div v-for="variable in variables" v-bind:key="variable.id">
       <p>Name: {{ variable.name }}</p>
       <button v-on:click="variableEntryFormToggle = variable.id">
@@ -42,6 +42,7 @@
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
+    <router-link to="/variables">Variable Graphs Page</router-link>
   </div>
 </template>
 
@@ -78,7 +79,7 @@ export default {
         axios.delete(`/api/variables/${variable.id}`).then((response) => {
           console.log(response.data);
           this.message = response.data;
-          this.$router.push("/");
+          this.$router.push(`/`);
         });
       }
     },

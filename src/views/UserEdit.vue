@@ -62,7 +62,7 @@ export default {
         .patch(`/api/users/${this.$route.params.id}`, params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push(`/`);
+          this.$router.push(`/users/${this.$route.params.id}`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
