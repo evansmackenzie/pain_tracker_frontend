@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link v-if="!loggedIn()" to="/">Home</router-link> |
       <router-link v-if="loggedIn()" to="/logout">Logout</router-link> |
-      <router-link v-if="loggedIn()" :to="`users/${getUserID()}`"
+      <router-link v-if="loggedIn()" :to="`/users/${getUserID()}`"
         >Profile Page</router-link
       >
     </div>
