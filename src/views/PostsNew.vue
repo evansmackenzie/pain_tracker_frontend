@@ -1,5 +1,5 @@
 <template>
-  <div class="PostsNew">
+  <div class="posts-new">
     <div class="container">
       <form v-on:submit.prevent="postNew()">
         <p v-if="!$parent.loggedIn()">Please log in to create post</p>

@@ -1,5 +1,5 @@
 <template>
-  <div class="UserEdit">
+  <div class="users-edit">
     <form v-on:submit.prevent="userEdit()">
       <h1>Update User</h1>
       <ul>

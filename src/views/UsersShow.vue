@@ -1,5 +1,5 @@
 <template>
-  <div class="UserShow">
+  <div class="users-show">
     <router-link to="/posts">Journal</router-link>
     <div></div>
     <p>Name: {{ user.name }}</p>

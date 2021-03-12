@@ -3,14 +3,14 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
-import UsersShow from "../views/UserShow.vue";
-import PostsIndex from "../views/PostIndex.vue";
-import PostsNew from "../views/PostNew.vue";
-import UsersEdit from "../views/UserEdit.vue";
-import PostsShow from "../views/PostShow.vue";
-import PostsEdit from "../views/PostEdit";
-import VariablesIndex from "../views/VariableIndex";
-import VariablesShow from "../views/VariableShow";
+import UsersShow from "../views/UsersShow.vue";
+import PostsIndex from "../views/PostsIndex.vue";
+import PostsNew from "../views/PostsNew.vue";
+import UsersEdit from "../views/UsersEdit.vue";
+import PostsShow from "../views/PostsShow.vue";
+import PostsEdit from "../views/PostsEdit";
+import VariablesIndex from "../views/VariablesIndex";
+import VariablesShow from "../views/VariablesShow";
 
 Vue.use(VueRouter);
 
@@ -32,42 +32,42 @@ const routes = [
   },
   {
     path: "/variables",
-    name: "VariableIndex",
+    name: "variables-index",
     component: VariablesIndex
   },
   {
     path: "/variables/:id",
-    name: "VariableShow",
+    name: "variables-show",
     component: VariablesShow
   },
   {
     path: "/users/:id",
-    name: "UserShow",
+    name: "users-show",
     component: UsersShow
   },
   {
     path: "/posts",
-    name: "PostIndex",
+    name: "posts-index",
     component: PostsIndex
   },
   {
     path: "/posts/new",
-    name: "PostNew",
+    name: "posts-new",
     component: PostsNew
   },
   {
     path: "/users/:id/edit",
-    name: "UserEdit",
+    name: "users-edit",
     component: UsersEdit
   },
   {
     path: "/posts/:id",
-    name: "PostShow",
+    name: "posts-show",
     component: PostsShow
   },
   {
     path: "/posts/:id/edit",
-    name: "PostEdit",
+    name: "posts-edit",
     component: PostsEdit
   }
 ];

@@ -1,5 +1,5 @@
 <template>
-  <div class="PostShow">
+  <div class="posts-show">
     <div>
       <p>user id: {{ post.user_id }}</p>
       <p>body: {{ post.body }}</p>

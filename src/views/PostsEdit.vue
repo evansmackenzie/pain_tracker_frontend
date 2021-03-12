@@ -1,5 +1,5 @@
 <template>
-  <div class="PostEdit">
+  <div class="posts-edit">
     <form v-on:submit.prevent="postEdit()">
       <h1>Update Post</h1>
       <ul>

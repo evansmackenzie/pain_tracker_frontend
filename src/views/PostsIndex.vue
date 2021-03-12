@@ -1,5 +1,5 @@
 <template>
-  <div class="PostIndex">
+  <div class="posts-index">
     <h1>My Pain Journal</h1>
     <router-link to="/posts/new">Create Journal Entry</router-link>
     <div v-for="post in posts" v-bind:key="post.id">

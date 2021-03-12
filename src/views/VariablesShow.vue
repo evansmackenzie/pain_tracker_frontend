@@ -1,16 +1,14 @@
 <template>
-  <div class="VariableIndex">
-    <h1>Variable Graphs</h1>
-    <div v-for="variable in variables" v-bind:key="variable.id">
+  <div class="variables-show">
+    <!-- <div>
       <h2>{{ variable.name }}</h2>
       <div v-for="entry in variable.entries" v-bind:key="entry.id">
         <p>value: {{ entry.value }}</p>
         <p>created: {{ relativeDate(entry.created_at) }}</p>
       </div>
-      <div>
-        <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
-      </div>
-      <router-link :to="`variables/${variable.id}`">More Info</router-link>
+    </div> -->
+    <div>
+      <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
     </div>
   </div>
 </template>
@@ -18,7 +16,10 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+// import Highcharts from "highcharts";
+// import HighchartsVue from "highcharts-vue";
 import { Chart } from "highcharts-vue";
+// Vue.use(HighchartsVue)
 
 export default {
   components: {
@@ -26,7 +27,7 @@ export default {
   },
   data: function() {
     return {
-      variables: [],
+      variable: {},
       chartOptions: {
         title: {
           text: "Monthly Average Temperature",
@@ -75,17 +76,16 @@ export default {
     };
   },
   created: function() {
-    axios.get(`/api/variables`).then((response) => {
+    axios.get(`/api/variables/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
-      this.variables = response.data;
-      this.variables.map((variable) =>
-        this.chartOptions.series.push({ data: variable.entries })
+      this.variable = response.data;
+      this.chartOptions.series[0].data = this.variable.entries.map(
+        (entry) => entry.value
       );
-      this.chartOptions.series.shift();
-      console.log(this.chartOptions.series);
-      // this.chartOptions.series[0].data = this.variables[0].entries.map(
-      //   (entry) => entry.value
-      // );
+      this.chartOptions.title.text = this.variable.name;
+      this.chartOptions.xAxis.categories = this.variable.entries.map(
+        (entry) => entry.created_at
+      );
     });
   },
   methods: {
