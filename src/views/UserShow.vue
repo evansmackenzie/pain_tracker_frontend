@@ -79,7 +79,11 @@ export default {
         axios.delete(`/api/variables/${variable.id}`).then((response) => {
           console.log(response.data);
           this.message = response.data;
-          // this.$router.push(`/`);
+          for (var i = 0; i < this.variables.length; i++) {
+            if (this.variables[i] === variable) {
+              this.variables.splice(i, 1);
+            }
+          }
         });
       }
     },
