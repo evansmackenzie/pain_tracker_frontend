@@ -1,11 +1,12 @@
 <template>
   <div class="posts-show">
     <div>
-      <p>user id: {{ post.user_id }}</p>
       <p>body: {{ post.body }}</p>
     </div>
     <div v-if="post.user_id == $parent.getUserID()">
-      <router-link :to="`/posts/${post.id}/edit`">Edit</router-link>
+      <router-link :to="`/posts/${post.id}/edit`" tag="button"
+        >Edit</router-link
+      >
       <button v-on:click="postDestroy()">Delete Post</button>
     </div>
     <!-- <router-link :to="`/posts/${post.id}/edit`">Edit</router-link>

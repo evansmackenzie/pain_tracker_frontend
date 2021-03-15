@@ -1,9 +1,19 @@
 <template>
   <div class="posts-index">
+    <div class="container">
+      <div>
+        search by date: <input type="text" v-model="filter" list="created_at" />
+      </div>
+      <datalist id="created_at">
+        <option v-for="post in posts" v-bind:key="post.id">
+          {{ post.created_at }}
+        </option>
+      </datalist>
+    </div>
     <h1>My Pain Journal</h1>
     <router-link to="/posts/new">Create Journal Entry</router-link>
-    <div v-for="post in posts" v-bind:key="post.id">
-      <p>written {{ relativeDate(post.created_at) }}</p>
+    <div v-for="post in filterBy(posts, filter)" v-bind:key="post.id">
+      <p>written {{ post.created_at }}</p>
       <p>{{ post.body }}</p>
       <router-link :to="`posts/${post.id}`">More Info</router-link>
     </div>
@@ -12,12 +22,15 @@
 
 <script>
 import axios from "axios";
-import moment from "moment";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       posts: [],
+      filter: "",
+      setAttribute: "",
     };
   },
   created: function() {
@@ -26,10 +39,6 @@ export default {
       this.posts = response.data;
     });
   },
-  methods: {
-    relativeDate: function(date) {
-      return moment(date).format("MMMM Do YYYY, h:mm:ss a");
-    },
-  },
+  methods: {},
 };
 </script>

@@ -15,11 +15,7 @@
 
 <script>
 import axios from "axios";
-import moment from "moment";
-// import Highcharts from "highcharts";
-// import HighchartsVue from "highcharts-vue";
 import { Chart } from "highcharts-vue";
-// Vue.use(HighchartsVue)
 
 export default {
   components: {
@@ -33,7 +29,7 @@ export default {
           text: "Monthly Average Temperature",
         },
         subtitle: {
-          text: "Source: WorldClimate.com",
+          text: "",
         },
         xAxis: {
           categories: [
@@ -61,7 +57,7 @@ export default {
             dataLabels: {
               enabled: true,
             },
-            enableMouseTracking: false,
+            enableMouseTracking: true,
           },
         },
         chart: {
@@ -88,10 +84,6 @@ export default {
       );
     });
   },
-  methods: {
-    relativeDate: function(date) {
-      return moment(date).format("MMMM Do YYYY, h:mm:ss a");
-    },
-  },
+  methods: {},
 };
 </script>
