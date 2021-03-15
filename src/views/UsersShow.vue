@@ -10,7 +10,7 @@
     <div v-for="variable in variables" v-bind:key="variable.id">
       <p>Name: {{ variable.name }}</p>
       <button v-on:click="variableEntryFormToggle = variable.id">
-        Enter Value
+        Enter Tracking Data
       </button>
       <div v-if="variableEntryFormToggle === variable.id">
         <form v-on:submit.prevent="entryNew(variable)">
@@ -20,8 +20,12 @@
             </li>
           </ul>
           <div class="form-group">
-            <label>entry:</label>
+            <label>Value:</label>
             <input type="text" class="form-control" v-model="value" /> <br />
+          </div>
+          <div class="form-group">
+            <label>Rating:</label>
+            <input type="text" class="form-control" v-model="rating" /> <br />
           </div>
           <input type="submit" class="btn btn-primary" value="Submit" />
         </form>
@@ -56,6 +60,7 @@ export default {
       variables: [],
       variable_id: "",
       value: "",
+      rating: "",
       errors: [],
       variableEntryFormToggle: null,
       newVariable: "",
@@ -91,13 +96,14 @@ export default {
       var params = {
         variable_id: variable.id,
         value: this.value,
-        // user_id: this.userId,
+        rating: this.rating,
       };
       axios
         .post("/api/entries", params)
         .then((response) => {
           console.log(response.data);
           this.value = "";
+          this.rating = "";
           this.variableEntryFormToggle = null;
           // this.$router.push(`users/${response.data.variable.user}`);
         })

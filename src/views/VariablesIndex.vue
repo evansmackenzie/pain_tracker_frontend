@@ -52,7 +52,7 @@ export default {
         },
         yAxis: {
           title: {
-            text: "Entry Value",
+            text: "Entry Rating",
           },
         },
         plotOptions: {
@@ -91,7 +91,7 @@ export default {
     plotVariable: function(variable) {
       var newSeries = {};
       newSeries.name = variable.name;
-      newSeries.data = variable.entries.map((entry) => entry.value);
+      newSeries.data = variable.entries.map((entry) => entry.rating);
       if (this.chartOptions.series.length < 1) {
         this.chartOptions.xAxis.categories = variable.entries.map(
           (entry) => entry.created_at
