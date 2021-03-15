@@ -32,20 +32,7 @@ export default {
           text: "",
         },
         xAxis: {
-          categories: [
-            "Mon",
-            "Tues",
-            "Wed",
-            "Thurs",
-            "Fri",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
+          categories: [],
         },
         yAxis: {
           title: {

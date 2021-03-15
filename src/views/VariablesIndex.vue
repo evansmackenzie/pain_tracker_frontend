@@ -1,19 +1,20 @@
 <template>
   <div class="variables-index">
-    <h1>Variable Graphs</h1>
+    <h1>Variable Graph</h1>
+    <div>
+      <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
+    </div>
+
     <div v-for="variable in variables" v-bind:key="variable.id">
       <h2>{{ variable.name }}</h2>
-      <div
-        v-for="entry in entries[variables.indexOf(variable)]"
-        v-bind:key="entry.id"
-      >
+      <button v-on:click="plotVariable(variable)">Add to chart</button>
+
+      <!-- <div v-for="entry in variable.entries" v-bind:key="entry.id">
         <p>value: {{ entry.value }}</p>
         <p>created: {{ relativeDate(entry.created_at) }}</p>
-      </div>
-      <div>
-        <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
-      </div>
-      <router-link :to="`variables/${variable.id}`">More Info</router-link>
+      </div> -->
+
+      <router-link :to="`/variables/${variable.id}`">More Info</router-link>
     </div>
   </div>
 </template>
@@ -22,37 +23,32 @@
 import axios from "axios";
 import moment from "moment";
 import { Chart } from "highcharts-vue";
+// import Highcharts from "highcharts";
+// import stockInit from "highcharts/modules/stock";
+// import { EventBus } from "./../event-bus.js";
+// import { syncCharts } from "./../sync-charts.js";
+
+// stockInit(Highcharts);
+// syncCharts(Highcharts);
 
 export default {
+  props: ["options", "catchLegendEvents"],
   components: {
     highcharts: Chart,
   },
   data: function() {
     return {
       variables: [],
-      entries: [],
+
       chartOptions: {
         title: {
-          text: "Monthly Average Temperature",
+          text: "Variable Stuff",
         },
         subtitle: {
-          text: "Source: WorldClimate.com",
+          text: "",
         },
         xAxis: {
-          categories: [
-            "Mon",
-            "Tues",
-            "Wed",
-            "Thurs",
-            "Fri",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
+          categories: [],
         },
         yAxis: {
           title: {
@@ -64,17 +60,13 @@ export default {
             dataLabels: {
               enabled: true,
             },
-            enableMouseTracking: false,
+            enableMouseTracking: true,
           },
         },
         chart: {
           type: "line",
         },
-        series: [
-          {
-            data: [1, 2, 3],
-          },
-        ],
+        series: [],
       },
     };
   },
@@ -82,46 +74,31 @@ export default {
     axios.get(`/api/variables`).then((response) => {
       console.log(response.data);
       this.variables = response.data;
-      this.entries = this.variables.map((variable) => variable.entries);
-      console.log(this.entries);
 
-      var variableEntries = [];
-      var allVariableEntries = [];
-      this.variables.map(
-        (variable) => (variableEntries = variable.entries),
-        console.log(variableEntries),
-        allVariableEntries.push(variableEntries)
-      );
-      console.log(allVariableEntries);
-      console.log(this.entries);
-
-      var i = 0;
-      var values = [];
-      while (i < this.entries.length) {
-        this.entries[i].forEach(function(entry) {
-          values.push(entry.value);
-        });
-        i++;
-      }
-      console.log(values);
-
-      this.chartOptions.series.push({ data: values });
-
-      // this.variables.map((variable) =>
-      //   this.chartOptions.series.push({
-      //     data: this.entries(where this.entries.entry.variable_id == variable.id)(values),
-      //   })
-      // );
-      this.chartOptions.series.shift();
-      // console.log(this.chartOptions.series);
-      // this.chartOptions.series[0].data = this.variables[0].entries.map(
-      //   (entry) => entry.value
-      // );
+      // this.variables.forEach((variable) => {
+      //   this.chartOptions.series[
+      //     this.variables.indexOf(variable)
+      //   ].data = variable.entries.map((entry) => entry.value);
+      //   this.chartOptions.series[this.variables.indexOf(variable)].name =
+      //     variable.name;
+      // });
     });
   },
   methods: {
     relativeDate: function(date) {
       return moment(date).format("MMMM Do YYYY, h:mm:ss a");
+    },
+    plotVariable: function(variable) {
+      var newSeries = {};
+      newSeries.name = variable.name;
+      newSeries.data = variable.entries.map((entry) => entry.value);
+      if (this.chartOptions.series.length < 1) {
+        this.chartOptions.xAxis.categories = variable.entries.map(
+          (entry) => entry.created_at
+        );
+      }
+
+      this.chartOptions.series.push(newSeries);
     },
   },
 };
