@@ -104,12 +104,13 @@ export default {
           console.log(response.data);
           this.value = "";
           this.rating = "";
+          this.errors = [];
           this.variableEntryFormToggle = null;
           // this.$router.push(`users/${response.data.variable.user}`);
         })
         .catch((error) => {
-          this.status = error.response.status;
           this.errors = error.response.data.errors;
+          console.log(error.response.data.errors);
         });
     },
     variableNew: function() {
@@ -123,10 +124,10 @@ export default {
           console.log(response.data);
           this.variables.push(response.data);
           this.newVariable = "";
+          this.errors = [];
           // this.$router.push(`users/${response.data.variable.user}`);
         })
         .catch((error) => {
-          this.status = error.response.status;
           this.errors = error.response.data.errors;
         });
     },
