@@ -1,11 +1,11 @@
 <template>
   <div class="users-show">
-    <router-link to="/posts">Journal</router-link>
+    <router-link to="/posts" tag="button">Journal</router-link>
     <div></div>
     <p>Name: {{ user.name }}</p>
     <img v-bind:src="user.image_url" alt="" />
     <p>Email: {{ user.email }}</p>
-    <router-link :to="`/users/${user.id}/edit`">Edit</router-link>
+    <router-link :to="`/users/${user.id}/edit`" tag="button">Edit</router-link>
     <h2>Variables:</h2>
     <div v-for="variable in variables" v-bind:key="variable.id">
       <p>Name: {{ variable.name }}</p>
@@ -46,7 +46,7 @@
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
-    <router-link to="/variables">Variable Graphs Page</router-link>
+    <router-link to="/variables" tag="button">Variable Graphs Page</router-link>
   </div>
 </template>
 

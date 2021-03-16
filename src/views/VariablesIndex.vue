@@ -14,7 +14,9 @@
         <p>created: {{ relativeDate(entry.created_at) }}</p>
       </div> -->
 
-      <router-link :to="`/variables/${variable.id}`">More Info</router-link>
+      <router-link :to="`/variables/${variable.id}`" tag="button"
+        >More Info</router-link
+      >
     </div>
   </div>
 </template>
