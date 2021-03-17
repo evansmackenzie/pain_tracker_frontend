@@ -9,12 +9,10 @@
       </ul>
       <div class="form-group">
         <label>Body:</label>
-        <input type="text" class="form-control" v-model="post.body" />
+        <p style="white-space: pre-line;"></p>
+        <textarea v-model="post.body"></textarea>
       </div>
-      <!-- <div class="form-group">
-        <label>User Id:</label>
-        <input type="text" class="form-control" v-model="user.userId">
-      </div> -->
+
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
     <button v-on:click="postDestroy()">Delete Profile</button>
@@ -32,9 +30,9 @@ export default {
     };
   },
   created: function() {
-    axios.get(`/api/users/${this.$route.params.id}`).then((response) => {
+    axios.get(`/api/posts/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
-      this.user = response.data;
+      this.post = response.data;
     });
   },
   methods: {

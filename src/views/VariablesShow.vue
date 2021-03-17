@@ -4,7 +4,7 @@
       <h2>{{ variable.name }}</h2>
       <div class="container">
         <div>
-          search by date:
+          to edit entry, search by date:
           <input type="text" v-model="filter" list="created_at" />
         </div>
         <datalist id="created_at">
@@ -19,7 +19,7 @@
           v-bind:key="entry.id"
         >
           <form v-on:submit.prevent="entryEdit(entry)">
-            <h1>Update Entry</h1>
+            <p>Update Entry</p>
             <ul>
               <li
                 class="text-danger"

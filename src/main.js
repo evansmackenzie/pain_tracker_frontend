@@ -4,6 +4,9 @@ import router from "./router";
 import axios from "axios";
 import HighchartsVue from 'highcharts-vue';
 import Vue2Filters from 'vue2-filters';
+import VueInputAutowidth from 'vue-input-autowidth';
+
+Vue.use(VueInputAutowidth);
 
 Vue.use(Vue2Filters);
 

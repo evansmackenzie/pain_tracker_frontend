@@ -1,6 +1,6 @@
 <template>
   <div class="posts-new">
-    <div class="container">
+    <div class="container" id="newPost">
       <form v-on:submit.prevent="postNew()">
         <p v-if="!$parent.loggedIn()">Please log in to create post</p>
         <h1>Create New Post</h1>
@@ -12,7 +12,8 @@
         </ul>
         <div class="form-group">
           <label>Body:</label>
-          <input type="text" class="form-control" v-model="body" /> <br />
+          <p style="white-space: pre-line;"></p>
+          <textarea v-model="body"></textarea>
         </div>
 
         <input type="submit" class="btn btn-primary" value="Submit" />
