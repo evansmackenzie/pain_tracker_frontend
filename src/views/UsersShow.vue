@@ -9,11 +9,25 @@
     <h2>Variables:</h2>
     <div v-for="variable in variables" v-bind:key="variable.id">
       <p>Name: {{ variable.name }}</p>
-      <button v-on:click="variableEntryFormToggle = variable.id">
+
+      <!-- <button v-on:click="variableEntryFormToggle = variable.id">
         Enter Tracking Data
-      </button>
-      <div v-if="variableEntryFormToggle === variable.id">
-        <form v-on:submit.prevent="entryNew(variable)">
+      </button> -->
+      <div>
+        <p
+          v-if="variable.last_entry && variable.last_entry.created_at == today"
+        >
+          Value:{{ variable.last_entry.value }}, Rating:{{
+            variable.last_entry.rating
+          }}
+        </p>
+        <form
+          v-if="
+            (variable.last_entry && variable.last_entry.created_at != today) ||
+              !variable.last_entry
+          "
+          v-on:submit.prevent="entryNew(variable)"
+        >
           <ul>
             <li class="text-danger" v-for="error in errors" v-bind:key="error">
               {{ error }}
@@ -65,6 +79,8 @@ export default {
       variableEntryFormToggle: null,
       newVariable: "",
       message: "",
+      entryCreatedAt: "",
+      today: "",
     };
   },
   created: function() {
@@ -73,6 +89,13 @@ export default {
       this.user = response.data;
       this.variables = response.data.variables;
     });
+
+    this.today = new Date();
+    var dd = String(this.today.getDate()).padStart(2, "0");
+    var mm = String(this.today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = this.today.getFullYear();
+    this.today = mm + "/" + dd + "/" + yyyy;
+    console.log(this.today);
   },
   methods: {
     variableDestroy: function(variable) {
@@ -106,6 +129,7 @@ export default {
           this.rating = "";
           this.errors = [];
           this.variableEntryFormToggle = null;
+          variable.last_entry = response.data;
           // this.$router.push(`users/${response.data.variable.user}`);
         })
         .catch((error) => {
