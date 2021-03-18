@@ -35,11 +35,18 @@
           </ul>
           <div class="form-group">
             <label>Value:</label>
-            <input type="text" class="form-control" v-model="value" /> <br />
+            <input
+              type="text"
+              class="form-control"
+              :id="variable.id"
+              v-model="variable.value"
+            />
+            <br />
           </div>
           <div class="form-group">
             <label>Rating:</label>
-            <input type="text" class="form-control" v-model="rating" /> <br />
+            <input type="text" class="form-control" v-model="variable.rating" />
+            <br />
           </div>
           <input type="submit" class="btn btn-primary" value="Submit" />
         </form>
@@ -118,8 +125,8 @@ export default {
     entryNew: function(variable) {
       var params = {
         variable_id: variable.id,
-        value: this.value,
-        rating: this.rating,
+        value: variable.value,
+        rating: variable.rating,
       };
       axios
         .post("/api/entries", params)
