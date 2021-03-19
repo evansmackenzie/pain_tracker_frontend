@@ -106,12 +106,12 @@ export default {
         .calendar();
     },
     relativeTodayDate: function(date) {
-      return moment(date).format("M/D/YYYY");
+      return moment(date).format("MM/DD/YYYY");
     },
     plotVariable: function(variable) {
       var newSeries = {};
       newSeries.name = variable.name;
-      newSeries.data = variable.entries.map((entry) => entry.rating);
+      // newSeries.data = variable.entries.map((entry) => entry.rating);
       // if (this.chartOptions.series.length < 1) {
       // this.chartOptions.xAxis.categories = variable.entries.map(
       //   (entry) => entry.created_at
@@ -121,14 +121,34 @@ export default {
       this.dateRange.forEach(function(createDate) {
         graphView[createDate] = null;
       });
-
+      // var ratings = [];
+      // this.dateRange.forEach((date) => {
+      //   variable.entries.forEach(function(entry) {
+      //     if (date == entry.created_at) {
+      //       ratings.push(entry.rating);
+      //     } else {
+      //       ratings.push(null);
+      //     }
+      //   });
+      // });
+      // console.log(ratings);
+      // var ratings = []
+      var dates = this.dateRange;
+      console.log(dates);
       variable.entries.forEach(function(entry) {
-        if (entry.created_at in graphView) {
+        if (dates.includes(entry.created_at)) {
           graphView[entry.created_at] = entry.rating;
         }
       });
 
       console.log(graphView);
+      var newSeriesData = [];
+
+      for (const prop in graphView) {
+        newSeriesData.push(parseInt(`${graphView[prop]}`));
+      }
+      console.log(newSeriesData);
+      newSeries.data = newSeriesData;
 
       this.chartOptions.xAxis.categories = this.dateRange;
 
