@@ -1,7 +1,7 @@
 <template>
   <div class="variables-index">
     <h1>Variable Graph</h1>
-    <p>{{ relativeDate(today) }}</p>
+    <p>{{ relativeTodayDate(today) }}</p>
     <div>
       <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
     </div>
@@ -85,35 +85,19 @@ export default {
     var yyyy = this.today.getFullYear();
     this.today = mm + "/" + dd + "/" + yyyy;
     console.log(this.today);
-    console.log(mm - 1);
-    console.log(dd - 1);
-    console.log(yyyy);
-    // var start = "02-17-21";
-    // var end = this.today;
 
-    // var getDateArray = function() {
-    //   var arr = new Array();
-    //   var dt = new Date(this.relativeDate(this.today));
-    //   while (dt <= this.today) {
-    //     arr.push(new Date(dt).toString().substring(0, 15)); //save only the Day MMM DD YYYY part
-    //     dt.setDate(dt.getDate() + 1);
-    //   }
-    //   return arr;
-    // };
-    // console.log(getDateArray);
-    // console.log(start);
-    // console.log(end);
-    console.log(new Date(this.relativeDate(this.today)));
+    console.log(
+      this.relativeTodayDate(new Date(this.relativeDate(this.today)))
+    );
 
     var startDate = new Date(this.relativeDate(this.today));
-
     for (var i = 2; i < 19; i++) {
       startDate.setDate(i);
-      this.dateRange.push(startDate.toDateString());
+      var date = startDate.toDateString();
+      this.dateRange.push(this.relativeTodayDate(date));
     }
 
-    console.log(this.dateRange);
-    console.log(startDate.toDateString());
+    // console.log(this.dateRange);
   },
   methods: {
     relativeDate: function(date) {
@@ -121,15 +105,30 @@ export default {
         .subtract(13, "days")
         .calendar();
     },
+    relativeTodayDate: function(date) {
+      return moment(date).format("M/D/YYYY");
+    },
     plotVariable: function(variable) {
       var newSeries = {};
       newSeries.name = variable.name;
       newSeries.data = variable.entries.map((entry) => entry.rating);
       // if (this.chartOptions.series.length < 1) {
-      //   this.chartOptions.xAxis.categories = variable.entries.map(
-      //     (entry) => entry.created_at
-      //   );
+      // this.chartOptions.xAxis.categories = variable.entries.map(
+      //   (entry) => entry.created_at
+      // );
       // }
+      var graphView = {};
+      this.dateRange.forEach(function(createDate) {
+        graphView[createDate] = null;
+      });
+
+      variable.entries.forEach(function(entry) {
+        if (entry.created_at in graphView) {
+          graphView[entry.created_at] = entry.rating;
+        }
+      });
+
+      console.log(graphView);
 
       this.chartOptions.xAxis.categories = this.dateRange;
 
