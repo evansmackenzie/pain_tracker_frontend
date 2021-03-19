@@ -15,7 +15,7 @@
 
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
-    <button v-on:click="postDestroy()">Delete Profile</button>
+    <button v-on:click="postDestroy()">Delete Post</button>
   </div>
 </template>
 

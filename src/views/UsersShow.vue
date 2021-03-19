@@ -10,9 +10,6 @@
     <div v-for="variable in variables" v-bind:key="variable.id">
       <p>Name: {{ variable.name }}</p>
 
-      <!-- <button v-on:click="variableEntryFormToggle = variable.id">
-        Enter Tracking Data
-      </button> -->
       <div>
         <p
           v-if="variable.last_entry && variable.last_entry.created_at == today"
@@ -83,7 +80,6 @@ export default {
       value: "",
       rating: "",
       errors: [],
-      variableEntryFormToggle: null,
       newVariable: "",
       message: "",
       entryCreatedAt: "",
@@ -135,7 +131,6 @@ export default {
           this.value = "";
           this.rating = "";
           this.errors = [];
-          this.variableEntryFormToggle = null;
           variable.last_entry = response.data;
           // this.$router.push(`users/${response.data.variable.user}`);
         })
