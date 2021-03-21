@@ -24,15 +24,26 @@
                   >
                 </li>
                 <li v-if="loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
-                  <router-link class="nav-link g-py-7 g-px-0" to="/logout"
-                    >Logout</router-link
-                  >
-                </li>
-                <li v-if="loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
                   <router-link
                     class="nav-link g-py-7 g-px-0"
                     :to="`/users/${getUserID()}`"
                     >Profile Page</router-link
+                  >
+                </li>
+                <li v-if="loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
+                  <router-link class="nav-link g-py-7 g-px-0" to="/posts"
+                    >Journal</router-link
+                  >
+                </li>
+
+                <li v-if="loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
+                  <router-link class="nav-link g-py-7 g-px-0" to="/variables"
+                    >Variable Graphs</router-link
+                  >
+                </li>
+                <li v-if="loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
+                  <router-link class="nav-link g-py-7 g-px-0" to="/logout"
+                    >Logout</router-link
                   >
                 </li>
 

@@ -9,22 +9,32 @@
       </div>
     </section>
     <!-- End Breadcrumbs -->
-
-    <!-- my code -->
-    <div class="container">
-      <div>
-        search by date: <input type="text" v-model="filter" list="created_at" />
+    <form class="g-brd-around g-brd-gray-light-v4 g-pa-15 g-mb-20">
+      <div class="form-group row justify-content-center g-mb-15">
+        <label for="example-date-input" class="col-2 col-form-label"
+          >Search By Specific Date</label
+        >
+        <div class="col-3">
+          <input
+            class="form-control rounded-0 form-control-md"
+            type="text"
+            value="2011-08-19"
+            id="example-date-input"
+            v-model="filter"
+            list="created_at"
+          />
+          <datalist id="created_at">
+            <option v-for="post in posts" v-bind:key="post.id">
+              {{ post.created_at }}
+            </option>
+          </datalist>
+        </div>
       </div>
-      <router-link to="/posts/new" tag="button"
-        >Create Journal Entry</router-link
-      >
-      <datalist id="created_at">
-        <option v-for="post in posts" v-bind:key="post.id">
-          {{ post.created_at }}
-        </option>
-      </datalist>
-    </div>
-
+    </form>
+    <!-- End Textual Inputs -->
+    <a href="/posts/new" class="btn btn-md u-btn-primary g-mr-10 g-mb-15"
+      >New Journal Entry</a
+    >
     <!-- Blog Minimal Blocks -->
     <div
       class="container g-py-15"
