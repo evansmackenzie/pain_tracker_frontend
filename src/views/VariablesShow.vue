@@ -45,11 +45,26 @@
     <div>
       <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
     </div>
+
+    <div>
+      <label>Start Date:</label>
+      <input type="text" class="form-control" v-model="startDate" />
+      <br />
+    </div>
+    <div>
+      <label>End date:</label>
+      <input type="text" class="form-control" v-model="endDate" />
+      <br />
+    </div>
+    <button v-on:click="chartDateRange(startDate, endDate)">
+      See Date Range
+    </button>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import moment from "moment";
 import { Chart } from "highcharts-vue";
 import Vue2Filters from "vue2-filters";
 
@@ -64,6 +79,8 @@ export default {
       filter: null,
       entry: {},
       errors: [],
+      startDate: "",
+      endDate: "",
       chartOptions: {
         title: {
           text: "",
@@ -94,7 +111,7 @@ export default {
         series: [
           {
             name: "Value",
-            data: [1, 2, 3],
+            data: [],
           },
           {
             name: "Rating",
@@ -139,6 +156,60 @@ export default {
       console.log(entry);
       this.filter = null;
     },
+    formatDate: function(date) {
+      return moment(date).format("MM/DD/YYYY");
+    },
+    chartDateRange: function(startDate, endDate) {
+      var formattedStartDate = this.formatDate(startDate);
+      var formattedEndDate = this.formatDate(endDate);
+      var startIndex = "";
+      var endIndex = "";
+
+      this.variable.entries.forEach(
+        function(entry) {
+          if (entry.created_at == formattedStartDate) {
+            startIndex = this.variable.entries.indexOf(entry);
+          }
+          if (entry.created_at == formattedEndDate) {
+            endIndex = this.variable.entries.indexOf(entry);
+          }
+        }.bind(this)
+      );
+
+      var selectedTimeFrameEntries = this.variable.entries.slice(
+        startIndex,
+        endIndex + 1
+      );
+      this.chartOptions.series[0].data = selectedTimeFrameEntries.map(
+        (entry) => entry.value
+      );
+      this.chartOptions.series[1].data = selectedTimeFrameEntries.map(
+        (entry) => entry.rating
+      );
+      // this.chartOptions.title.text = this.variable.name;
+      this.chartOptions.xAxis.categories = selectedTimeFrameEntries.map(
+        (entry) => entry.created_at
+      );
+    },
   },
 };
+//   formatDate: function(date) {
+//     return moment(date).format("MM/DD/YYYY");
+//   },
+//   chartDateRange: function(startDate, endDate) {
+//     this.chartOptions.series.length = 0;
+//     var formattedStartDate = this.formatDate(startDate);
+//     var formattedEndDate = this.formatDate(endDate);
+//     var index1 = "";
+//     this.variable.entries.forEach(
+//       function(entry) {
+//         if (entry.created_at == formattedStartDate) {
+//           index1 = this.variable.indexOf(entry);
+//         }
+//       }.bind(this)
+//     );
+//     console.log(formattedEndDate);
+//     console.log(index1);
+//   },
+// };
 </script>

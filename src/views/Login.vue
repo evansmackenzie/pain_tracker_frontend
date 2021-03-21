@@ -33,11 +33,6 @@
                     v-model="email"
                   />
                 </div>
-                <!-- my code -->
-                <!-- <div class="form-group">
-                  <label>Email:</label>
-                  <input type="email" class="form-control" v-model="email" />
-                </div> -->
 
                 <div class="g-mb-35">
                   <label
