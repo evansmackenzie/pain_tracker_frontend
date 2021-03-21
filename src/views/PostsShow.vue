@@ -1,7 +1,7 @@
 <template>
   <div class="posts-show">
     <div>
-      <p>body: {{ post.body }}</p>
+      <p>{{ post.body }}</p>
     </div>
     <div v-if="post.user_id == $parent.getUserID()">
       <router-link :to="`/posts/${post.id}/edit`" tag="button"

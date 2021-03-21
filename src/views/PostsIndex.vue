@@ -52,7 +52,7 @@
               >
 
               <p class="g-color-gray-dark-v4 g-font-size-18 g-line-height-1_8">
-                {{ post.body }}
+                {{ post.body.slice(0, 150) }} . . .
               </p>
               <a class="g-font-size-15" :href="`posts/${post.id}`"
                 >Read more...</a
@@ -159,6 +159,8 @@ export default {
     axios.get(`/api/posts`).then((response) => {
       console.log(response.data);
       this.posts = response.data;
+      var length = this.posts[0].body.length;
+      console.log(length);
     });
   },
   methods: {},
