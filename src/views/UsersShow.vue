@@ -3,7 +3,7 @@
     <!-- Breadcrumb -->
     <section class="g-bg-gray-light-v5 g-py-40">
       <div class="container text-center">
-        <h2 class="h2 g-color-black g-font-size-40 g-font-weight-600">
+        <h2 class="h2 g-color-primary g-font-size-40 g-font-weight-600 ">
           Choose Your Variables and Track Daily
         </h2>
       </div>
@@ -68,10 +68,7 @@
                 class="list-group-item list-group-item-action justify-content-between"
               >
                 <!-- <router-link to="/posts" tag="button">Journal</router-link> -->
-                <span
-                  ><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i>
-                  Journal</span
-                >
+                <span><i class="icon-notebook"></i> Journal</span>
               </a>
               <!-- End Settings -->
               <!-- Settings -->
@@ -79,10 +76,7 @@
                 href="/variables"
                 class="list-group-item list-group-item-action justify-content-between"
               >
-                <span
-                  ><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i>
-                  Variables Graphs</span
-                >
+                <span><i class="et-icon-bargraph"></i> Variables Graphs</span>
               </a>
               <!-- General Forms -->
               <form
@@ -174,7 +168,6 @@
                 class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15"
               >
                 <h3 class="h6 mb-0">
-                  <i class="icon-briefcase g-pos-rel g-top-1 g-mr-5"></i>
                   Variables
                 </h3>
               </div>
