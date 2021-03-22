@@ -3,13 +3,13 @@
     <!-- Breadcrumbs -->
     <section class="g-bg-gray-light-v5 g-py-40">
       <div class="container text-center">
-        <h2 class="h2 g-color-black g-font-size-50 g-font-weight-600">
+        <h2 class="h2 g-color-black g-font-size-40 g-font-weight-600">
           Daily Journal
         </h2>
       </div>
     </section>
     <!-- End Breadcrumbs -->
-    <form class="g-brd-around g-brd-gray-light-v4 g-pa-15 g-mb-20">
+    <form class="g-brd-gray-light-v4 g-pa-15 g-mb-20">
       <div class="form-group row justify-content-center g-mb-15">
         <label for="example-date-input" class="col-2 col-form-label"
           >Search By Specific Date</label
@@ -54,7 +54,7 @@
               <p class="g-color-gray-dark-v4 g-font-size-18 g-line-height-1_8">
                 {{ post.body.slice(0, 150) }} . . .
               </p>
-              <a class="g-font-size-15" :href="`posts/${post.id}`"
+              <a class="g-font-size-15" :href="`posts/${post.id}/edit`"
                 >Read more...</a
               >
             </div>

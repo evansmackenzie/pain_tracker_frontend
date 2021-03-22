@@ -1,6 +1,38 @@
 <template>
   <div class="posts-edit">
-    <form v-on:submit.prevent="postEdit()">
+    <form
+      class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30"
+      v-on:submit.prevent="postEdit()"
+    >
+      <ul>
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">
+          {{ error }}
+        </li>
+      </ul>
+
+      <div class="form-group g-mb-25">
+        <label for="exampleTextarea" class="g-font-size-30">Edit Entry</label>
+        <textarea
+          class="form-control rounded-0 form-control-md"
+          id="exampleTextarea"
+          rows="6"
+          v-model="post.body"
+        ></textarea>
+      </div>
+
+      <input
+        type="submit"
+        class="btn btn-md u-btn-primary g-mr-10 g-mb-15"
+        value="Submit"
+      />
+      <input
+        v-on:click="postDestroy()"
+        class="btn btn-md u-btn-red g-mr-10 g-mb-15"
+        value="Delete Post"
+      />
+    </form>
+    <!-- my code -->
+    <!-- <form v-on:submit.prevent="postEdit()">
       <h1>Update Post</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
@@ -15,7 +47,7 @@
 
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
-    <button v-on:click="postDestroy()">Delete Post</button>
+    <button v-on:click="postDestroy()">Delete Post</button> -->
   </div>
 </template>
 

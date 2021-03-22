@@ -1,7 +1,17 @@
 <template>
   <div class="variables-show">
+    <!-- breadcrumbs -->
+    <section class="g-bg-gray-light-v5 g-py-40">
+      <div class="container text-center">
+        <h2 class="h2 g-color-black g-font-size-40 g-font-weight-600">
+          Variable: {{ variable.name }}
+        </h2>
+      </div>
+    </section>
+    <!-- breadcrumbs -->
+
+    <!-- my code -->
     <div>
-      <h2>{{ variable.name }}</h2>
       <div class="container">
         <div>
           to edit entry, search by date:
@@ -19,7 +29,6 @@
           v-bind:key="entry.id"
         >
           <form v-on:submit.prevent="entryEdit(entry)">
-            <p>Update Entry</p>
             <ul>
               <li
                 class="text-danger"
@@ -31,13 +40,13 @@
             </ul>
             <div class="form-group">
               <label>Value:</label>
-              <input type="text" class="form-control" v-model="entry.value" />
+              <input type="text" size="4" v-model="entry.value" />
             </div>
             <div class="form-group">
               <label>Rating:</label>
-              <input type="text" class="form-control" v-model="entry.rating" />
+              <input type="text" size="4" v-model="entry.rating" />
             </div>
-            <input type="submit" class="btn btn-primary" value="Submit" />
+            <input type="submit" class="btn btn-primary" value="Change Entry" />
           </form>
         </div>
       </div>
@@ -48,15 +57,18 @@
 
     <div>
       <label>Start Date:</label>
-      <input type="text" class="form-control" v-model="startDate" />
+      <input type="text" v-model="startDate" />
       <br />
     </div>
     <div>
       <label>End date:</label>
-      <input type="text" class="form-control" v-model="endDate" />
+      <input type="text" v-model="endDate" />
       <br />
     </div>
-    <button v-on:click="chartDateRange(startDate, endDate)">
+    <button
+      class="btn btn-md u-btn-primary g-mr-10 g-mb-15"
+      v-on:click="chartDateRange(startDate, endDate)"
+    >
       See Date Range
     </button>
   </div>

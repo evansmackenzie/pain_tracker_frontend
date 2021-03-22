@@ -1,13 +1,11 @@
 <template>
   <div class="users-show">
     <!-- Breadcrumb -->
-    <section class="g-my-30">
-      <div class="container">
-        <ul class="u-list-inline">
-          <li class="list-inline-item g-color-primary">
-            <span>User Profile</span>
-          </li>
-        </ul>
+    <section class="g-bg-gray-light-v5 g-py-40">
+      <div class="container text-center">
+        <h2 class="h2 g-color-black g-font-size-40 g-font-weight-600">
+          Choose Your Variables and Track Daily
+        </h2>
       </div>
     </section>
     <!-- End Breadcrumb -->
@@ -275,11 +273,6 @@
                   class="btn btn-md u-btn-red g-mr-10 g-mb-15"
                   value="Delete Variable"
                 />
-                <!-- <a
-                  v-on:click="variableDestroy(variable)"
-                  class="btn btn-md u-btn-red g-mr-10 g-mb-15"
-                  >Delete Variable</a
-                > -->
               </form>
               <!-- End General Forms -->
             </div>
