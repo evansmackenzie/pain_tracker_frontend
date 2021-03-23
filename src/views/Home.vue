@@ -188,15 +188,15 @@
           <div class="col-lg-4 g-mb-30">
             <!-- Icon Blocks -->
             <div class="text-center">
-              <span class="d-block g-color-primary g-font-size-35 g-mb-5">
-                <i class="icon-education-087 u-line-icon-pro"></i>
+              <span class="d-block g-font-size-35 g-mb-5 g-color-primary">
+                <i class="et-icon-calendar"></i>
               </span>
               <h3 class="h5 g-color-black text-uppercase mb-3">
-                Creative ideas
+                Track Your Data
               </h3>
               <p class="g-color-gray-dark-v4">
-                We strive to embrace and drive change in our industry which
-                allows us to keep our clients relevant and ready to adapt.
+                Think about what behaviors or habits in your life you could
+                change that may have an impact on your symptoms.
               </p>
             </div>
             <!-- End Icon Blocks -->
@@ -205,15 +205,18 @@
           <div class="col-lg-4 g-mb-30">
             <!-- Icon Blocks -->
             <div class="text-center">
-              <span class="d-block g-color-primary g-font-size-35 g-mb-5">
+              <!-- <span class="d-block g-color-primary g-font-size-35 g-mb-5">
                 <i class="icon-education-035 u-line-icon-pro"></i>
+              </span> -->
+              <span class="d-block g-font-size-35 g-mb-5 g-color-primary">
+                <i class="icon-fire"></i>
               </span>
               <h3 class="h5 g-color-black text-uppercase mb-3">
-                Excellent features
+                Gain Understanding
               </h3>
               <p class="g-color-gray-dark-v4">
-                We strive to embrace and drive change in our industry which
-                allows us to keep our clients relevant and ready to adapt.
+                Monitor the behaviors you chose on a daily basis, and see how
+                those behaviors may correlate with your symptoms.
               </p>
             </div>
             <!-- End Icon Blocks -->
@@ -222,15 +225,18 @@
           <div class="col-lg-4 g-mb-30">
             <!-- Icon Blocks -->
             <div class="text-center">
-              <span class="d-block g-color-primary g-font-size-35 g-mb-5">
+              <!-- <span class="d-block g-color-primary g-font-size-35 g-mb-5">
                 <i class="icon-education-141 u-line-icon-pro"></i>
+              </span> -->
+              <span class="d-block g-font-size-35 g-mb-5 g-color-primary">
+                <i class="et-icon-trophy"></i>
               </span>
               <h3 class="h5 g-color-black text-uppercase mb-3">
-                Fully responsive
+                Improve With Knowledge
               </h3>
               <p class="g-color-gray-dark-v4">
-                We strive to embrace and drive change in our industry which
-                allows us to keep our clients relevant and ready to adapt.
+                See patterns in your data, recognize that you have some control
+                over your symptoms, and change your behavior accordingly.
               </p>
             </div>
             <!-- End Icon Blocks -->

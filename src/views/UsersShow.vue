@@ -1,7 +1,7 @@
 <template>
   <div class="users-show">
     <!-- Breadcrumb -->
-    <section class="g-bg-white g-py-40">
+    <section class="g-bg-gray-light-v5 g-py-40">
       <div class="container text-center">
         <h2 class="h2 g-color-primary g-font-size-40 g-font-weight-600 ">
           Choose Your Variables and Track Daily
@@ -123,13 +123,13 @@
           <div class="col-lg-9">
             <!-- User Block -->
             <div class="g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-40">
-              <div class="row">
+              <div>
                 <!-- <div class="col-lg-4 g-mb-40 g-mb-0--lg"></div> -->
 
-                <div class="row">
+                <div>
                   <!-- User Details -->
                   <div
-                    class="d-flex align-items-center justify-content-sm-between g-mb-5"
+                    class="d-flex align-items-left justify-content-sm-between g-mb-5"
                   >
                     <h2 class="g-font-weight-300 g-mr-10">{{ user.name }}</h2>
                   </div>
@@ -141,7 +141,7 @@
                     Welcome buddy! This is the page where you will do most of
                     your heavy lifting. The idea is to think of some things
                     (variables) that you think are important to track, i.e
-                    things that affect youir pain. You can create your variables
+                    things that affect your pain. You can create your variables
                     here, and then all of the variables you create will be
                     displayed on this page. For each variable, you will track a
                     "value" and a "rating". A rating is a number from 1-10, and

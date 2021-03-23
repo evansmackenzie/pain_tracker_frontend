@@ -3,7 +3,7 @@
     <header id="js-header" class="u-header u-header--static">
       <div
         class="u-header__section u-header__section--light g-transition-0_3 g-py-10"
-        style="background-color: #f9fdf9"
+        style="background-size: cover; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMJvaam7E9aCBymeeQJyxseUA1D5pSsKCyhQ&usqp=CAU');"
       >
         <nav
           class="js-mega-menu navbar navbar-expand-lg hs-menu-initialized hs-menu-horizontal"
@@ -66,6 +66,11 @@
                     >Signup</router-link
                   >
                 </li>
+                <li v-if="!loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
+                  <router-link class="nav-link g-py-7 g-px-0" to="/login"
+                    >Login</router-link
+                  >
+                </li>
                 <li v-if="loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
                   <router-link
                     class="nav-link g-py-7 g-px-0"
@@ -101,229 +106,112 @@
     <main></main>
     <router-view />
     <!-- Footer -->
-    <!-- Footer -->
-    <footer class="g-bg-black-opacity-0_9 g-color-white-opacity-0_6 g-py-60">
-      <div class="container">
+    <footer
+      class="g-bg-blue-radialgradient-circle g-color-white-opacity-0_8 g-bg-img-hero g-pt-60"
+    >
+      <div class="container g-mb-60">
         <div class="row">
           <!-- Footer Content -->
-          <div class="col-lg-4 g-mb-50 g-mb-0--lg">
-            <h2
-              class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20"
-            >
-              About Us
-            </h2>
-            <div class="g-mb-25">
-              <p>
-                Unify consectetur adipiscing elit. Proin vitae est lorem. Aenean
-                imperdiet nisi a dolor condimentum. Aenean imperdiet nisi a
-                dolor condimentum, id ullamcorper lacus vestibulum. Praesent
-                pulvinar gravida.
-              </p>
+          <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+            <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+              <h2 class="u-heading-v2__title h6 text-uppercase mb-0">
+                About Us
+              </h2>
             </div>
 
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a
-                  class="u-icon-v3 u-icon-size--sm g-font-size-default g-bg-white-opacity-0_1 g-bg-primary--hover g-color-white-opacity-0_8 rounded"
-                  href="#"
-                >
-                  <i class="fa fa-twitter"></i>
-                </a>
+            <div class="g-mb-30">
+              <p>
+                Unify is an ultra fully responsive template with modern and
+                design and awesome features.
+              </p>
+            </div>
+          </div>
+          <!-- End Footer Content -->
+
+          <!-- Footer Content -->
+          <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
+            <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+              <h2 class="u-heading-v2__title h6 text-uppercase mb-0">
+                Useful Links
+              </h2>
+            </div>
+
+            <ul class="list-unstyled">
+              <li class="g-mb-5">
+                <i class="fa fa-angle-right g-mr-5"></i>
+                <a class="g-color-white-opacity-0_8" href="#">Wrapbootstrap</a>
               </li>
-              <li class="list-inline-item g-mx-5">
-                <a
-                  class="u-icon-v3 u-icon-size--sm g-font-size-default g-bg-white-opacity-0_1 g-bg-primary--hover g-color-white-opacity-0_8 rounded"
-                  href="#"
-                >
-                  <i class="fa fa-pinterest"></i>
-                </a>
+              <li class="g-mb-5">
+                <i class="fa fa-angle-right g-mr-5"></i>
+                <a class="g-color-white-opacity-0_8" href="#">Google</a>
               </li>
-              <li class="list-inline-item g-mx-5">
-                <a
-                  class="u-icon-v3 u-icon-size--sm g-font-size-default g-bg-white-opacity-0_1 g-bg-primary--hover g-color-white-opacity-0_8 rounded"
-                  href="#"
-                >
-                  <i class="fa fa-facebook"></i>
-                </a>
+              <li class="g-mb-5">
+                <i class="fa fa-angle-right g-mr-5"></i>
+                <a class="g-color-white-opacity-0_8" href="#">Marketing</a>
               </li>
-              <li class="list-inline-item g-mx-5">
-                <a
-                  class="u-icon-v3 u-icon-size--sm g-font-size-default g-bg-white-opacity-0_1 g-bg-primary--hover g-color-white-opacity-0_8 rounded"
-                  href="#"
-                >
-                  <i class="fa fa-instagram"></i>
-                </a>
+              <li class="g-mb-5">
+                <i class="fa fa-angle-right g-mr-5"></i>
+                <a class="g-color-white-opacity-0_8" href="#">Support Forum</a>
+              </li>
+              <li class="mb-0">
+                <i class="fa fa-angle-right g-mr-5"></i>
+                <a class="g-color-white-opacity-0_8" href="#">Themes</a>
               </li>
             </ul>
           </div>
           <!-- End Footer Content -->
 
           <!-- Footer Content -->
-          <div class="col-lg-4 g-mb-30 g-mb-0--lg">
-            <h2
-              class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20"
-            >
-              Useful Links
-            </h2>
-            <div class="row">
-              <div class="col-sm-6">
-                <ul class="list-unstyled g-mb-30 g-mb-0--md">
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >About Us</a
-                    >
-                  </li>
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Our Services</a
-                    >
-                  </li>
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Terms</a
-                    >
-                  </li>
-
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Help Center</a
-                    >
-                  </li>
-                  <li class="d-flex">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >FAQ</a
-                    >
-                  </li>
-                </ul>
-              </div>
-
-              <div class="col-sm-6">
-                <ul class="list-unstyled mb-0">
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Blog</a
-                    >
-                  </li>
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Community</a
-                    >
-                  </li>
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Forums</a
-                    >
-                  </li>
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Advertise</a
-                    >
-                  </li>
-                  <li class="d-flex g-mb-12">
-                    <i
-                      class="fa fa-circle g-color-primary g-font-size-5 g-mt-10 g-mr-8"
-                    ></i>
-                    <a
-                      class="g-color-white-opacity-0_6 g-color-primary--hover"
-                      href="#"
-                      >Freebies</a
-                    >
-                  </li>
-                </ul>
-              </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
+              <h2 class="u-heading-v2__title h6 text-uppercase mb-0">
+                Newsletter
+              </h2>
             </div>
-          </div>
-          <!-- End Footer Content -->
 
-          <!-- Footer Content -->
-          <div class="col-lg-4">
-            <h2
-              class="h6 g-color-white text-uppercase g-font-weight-700 g-mb-20"
-            >
-              Subscribe
-            </h2>
-
-            <form class="g-mt-25">
-              <div class="row">
-                <div class="col-md-8 col-lg-12">
-                  <div class="form-group g-mb-20">
-                    <input
-                      class="form-control g-color-white g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_1 g-brd-primary--focus g-px-20 g-py-12"
-                      type="text"
-                      placeholder="Your Name"
-                    />
-                  </div>
-                  <div class="form-group g-mb-20">
-                    <input
-                      class="form-control g-color-white g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_1 g-brd-primary--focus g-px-20 g-py-12"
-                      type="email"
-                      placeholder="Your Email"
-                    />
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-lg-12">
-                  <button
-                    class="btn btn-md u-btn-primary g-font-size-12 text-uppercase rounded g-py-11 g-px-30"
-                    type="submit"
-                    role="button"
-                  >
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </form>
+            <p>
+              Follow us if you want to be kept up to date about what’s going on,
+              minute by minute, then search for htmlstream and give us a follow!
+            </p>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item g-mr-10">
+                <a
+                  class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-bg-white-opacity-0_2--hover g-color-white-opacity-0_6 rounded"
+                  href="#"
+                >
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item g-mr-10">
+                <a
+                  class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-bg-white-opacity-0_2--hover g-color-white-opacity-0_6 rounded"
+                  href="#"
+                >
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item g-mr-10">
+                <a
+                  class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-bg-white-opacity-0_2--hover g-color-white-opacity-0_6 rounded"
+                  href="#"
+                >
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item g-mr-10">
+                <a
+                  class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-bg-white-opacity-0_2--hover g-color-white-opacity-0_6 rounded"
+                  href="#"
+                >
+                  <i class="fa fa-dribbble"></i>
+                </a>
+              </li>
+            </ul>
           </div>
           <!-- End Footer Content -->
         </div>
       </div>
     </footer>
-    <!-- End Footer -->
     <!-- End Footer -->
   </div>
 </template>
