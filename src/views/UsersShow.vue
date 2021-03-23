@@ -1,7 +1,7 @@
 <template>
   <div class="users-show">
     <!-- Breadcrumb -->
-    <section class="g-bg-gray-light-v5 g-py-40">
+    <section class="g-bg-white g-py-40">
       <div class="container text-center">
         <h2 class="h2 g-color-primary g-font-size-40 g-font-weight-600 ">
           Choose Your Variables and Track Daily

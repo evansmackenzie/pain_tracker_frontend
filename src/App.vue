@@ -3,13 +3,14 @@
     <header id="js-header" class="u-header u-header--static">
       <div
         class="u-header__section u-header__section--light g-transition-0_3 g-py-10"
+        style="background-color: #f9fdf9"
       >
         <nav
           class="js-mega-menu navbar navbar-expand-lg hs-menu-initialized hs-menu-horizontal"
         >
           <div class="container">
             <!-- Logo -->
-            <a
+            <!-- <a
               href="http://flyclipart.com/abeka-clip-art-open-window-showing-a-sunrise-open-window-clipart-102009"
               class="navbar-brand d-flex"
             >
@@ -45,7 +46,7 @@
                   </g>
                 </g>
               </svg>
-            </a>
+            </a> -->
             <!-- Navigation -->
             <div
               class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg"
@@ -55,9 +56,14 @@
                 class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto"
               >
                 <!-- Shortcodes -->
-                <li v-if="!loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
+                <li class="nav-item g-mx-10--lg g-mx-15--xl">
                   <router-link class="nav-link g-py-7 g-px-0" to="/"
-                    >Home</router-link
+                    >About</router-link
+                  >
+                </li>
+                <li v-if="!loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">
+                  <router-link class="nav-link g-py-7 g-px-0" to="/signup"
+                    >Signup</router-link
                   >
                 </li>
                 <li v-if="loggedIn()" class="nav-item g-mx-10--lg g-mx-15--xl">

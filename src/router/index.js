@@ -11,6 +11,7 @@ import PostsShow from "../views/PostsShow.vue";
 import PostsEdit from "../views/PostsEdit";
 import VariablesIndex from "../views/VariablesIndex";
 import VariablesShow from "../views/VariablesShow";
+import Signup from "../views/Signup.vue";
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: Signup
   },
   {
     path: "/login",

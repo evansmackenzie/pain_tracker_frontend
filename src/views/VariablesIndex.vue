@@ -44,7 +44,7 @@
               <input type="text" v-model="newFinalDate" />
             </div>
             <button
-              class="btn btn-md u-btn-primary g-mr-10 g-mb-15"
+              class="btn btn-sm u-btn-primary g-mr-10 g-mb-15"
               v-on:click="generateXAxisCategories(newFinalDate)"
             >
               Search
@@ -68,7 +68,7 @@
                     add to chart
                   </button> -->
                   <a
-                    class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15"
+                    class="btn btn-sm u-btn-outline-primary g-mr-10 g-mb-15"
                     v-on:click="plotVariable(variable)"
                   >
                     add to chart
@@ -76,7 +76,7 @@
                 </li>
                 <li class="list-inline-item mx-1 mb-1">
                   <a
-                    class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15"
+                    class="btn btn-sm u-btn-outline-teal g-mr-10 g-mb-15"
                     :href="`/variables/${variable.id}`"
                   >
                     more info

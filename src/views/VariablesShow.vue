@@ -1,9 +1,9 @@
 <template>
   <div class="variables-show">
     <!-- breadcrumbs -->
-    <section class="g-bg-gray-light-v5 g-py-40">
+    <section class=" g-bg-gray-light-v5 g-py-40">
       <div class="container text-center">
-        <h2 class="h2 g-color-black g-font-size-40 g-font-weight-600">
+        <h2 class="h2 g-color-primary g-font-size-40 g-font-weight-600">
           Variable: {{ variable.name }}
         </h2>
       </div>
