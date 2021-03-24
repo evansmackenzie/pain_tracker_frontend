@@ -167,7 +167,7 @@
               <div
                 class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15"
               >
-                <h3 class="h6 mb-0">
+                <h3 style="font-size: 15px;" class="h6 mb-0">
                   Variables
                 </h3>
               </div>
@@ -180,7 +180,10 @@
                 v-bind:key="variable.id"
                 v-on:submit.prevent="entryNew(variable)"
               >
-                <h4 class="h6 g-font-weight-700 g-mb-20">
+                <h4
+                  style="font-size: 20px;"
+                  class="h6 g-font-weight-700 g-mb-20"
+                >
                   Name: {{ variable.name }}
                 </h4>
                 <ul>
@@ -194,6 +197,7 @@
                 </ul>
 
                 <p
+                  style="font-size: 15px;"
                   v-if="
                     variable.last_entry &&
                       variable.last_entry.created_at == today
@@ -212,7 +216,11 @@
                       !variable.last_entry
                   "
                 >
-                  <label class="col-sm-3 col-form-label g-mb-10">Value</label>
+                  <label
+                    style="font-size: 15px;"
+                    class="col-sm-3 col-form-label g-mb-10"
+                    >Value</label
+                  >
                   <div class="col-sm-9">
                     <div class="input-group g-brd-primary--focus">
                       <input

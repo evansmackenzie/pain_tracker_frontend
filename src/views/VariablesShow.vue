@@ -41,11 +41,11 @@
             </ul>
             <div class="form-group">
               <label>Value:</label>
-              <input type="text" size="4" v-model="entry.value" />
+              <input type="number" size="4" v-model="entry.value" />
             </div>
             <div class="form-group">
               <label>Rating:</label>
-              <input type="text" size="4" v-model="entry.rating" />
+              <input type="number" size="4" v-model="entry.rating" />
             </div>
             <input type="submit" class="btn btn-primary" value="Change Entry" />
           </form>
@@ -96,6 +96,10 @@ export default {
       errors: [],
       startDate: "",
       endDate: "",
+      formattedStartDate: "",
+      formattedEndDate: "",
+      startIndex: "",
+      endIndex: "",
       chartOptions: {
         title: {
           text: "",
@@ -131,6 +135,7 @@ export default {
           {
             name: "Rating",
             data: [],
+            color: "#72c02c",
           },
         ],
       },
@@ -164,6 +169,7 @@ export default {
         .patch(`/api/entries/${entry.id}`, params)
         .then((response) => {
           console.log(response.data);
+          this.renderSeriesData();
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
@@ -171,60 +177,56 @@ export default {
       console.log(entry);
       this.filter = null;
     },
+    renderSeriesData: function() {
+      if (this.startIndex == "") {
+        this.chartOptions.series[0].data = this.variable.entries.map((entry) =>
+          parseInt(entry.value)
+        );
+        console.log(this.chartOptions.series[0].data);
+        this.chartOptions.series[1].data = this.variable.entries.map((entry) =>
+          parseInt(entry.rating)
+        );
+        console.log(this.chartOptions.series[1].data);
+      } else {
+        this.chartDateRange(this.formattedStartDate, this.formattedEndDate);
+      }
+    },
     formatDate: function(date) {
       return moment(date).format("MM/DD/YYYY");
     },
     chartDateRange: function(startDate, endDate) {
-      var formattedStartDate = this.formatDate(startDate);
-      var formattedEndDate = this.formatDate(endDate);
-      var startIndex = "";
-      var endIndex = "";
+      this.formattedStartDate = this.formatDate(startDate);
+      this.formattedEndDate = this.formatDate(endDate);
 
       this.variable.entries.forEach(
         function(entry) {
-          if (entry.created_at == formattedStartDate) {
-            startIndex = this.variable.entries.indexOf(entry);
+          if (entry.created_at == this.formattedStartDate) {
+            this.startIndex = this.variable.entries.indexOf(entry);
           }
-          if (entry.created_at == formattedEndDate) {
-            endIndex = this.variable.entries.indexOf(entry);
+          if (entry.created_at == this.formattedEndDate) {
+            this.endIndex = this.variable.entries.indexOf(entry);
           }
         }.bind(this)
       );
 
       var selectedTimeFrameEntries = this.variable.entries.slice(
-        startIndex,
-        endIndex + 1
+        this.startIndex,
+        this.endIndex + 1
       );
-      this.chartOptions.series[0].data = selectedTimeFrameEntries.map(
-        (entry) => entry.value
+      this.chartOptions.series[0].data = selectedTimeFrameEntries.map((entry) =>
+        parseInt(entry.value)
       );
-      this.chartOptions.series[1].data = selectedTimeFrameEntries.map(
-        (entry) => entry.rating
+      this.chartOptions.series[1].data = selectedTimeFrameEntries.map((entry) =>
+        parseInt(entry.rating)
       );
       // this.chartOptions.title.text = this.variable.name;
       this.chartOptions.xAxis.categories = selectedTimeFrameEntries.map(
         (entry) => entry.created_at
       );
     },
+    forceRerender() {
+      this.componentKey += 1;
+    },
   },
 };
-//   formatDate: function(date) {
-//     return moment(date).format("MM/DD/YYYY");
-//   },
-//   chartDateRange: function(startDate, endDate) {
-//     this.chartOptions.series.length = 0;
-//     var formattedStartDate = this.formatDate(startDate);
-//     var formattedEndDate = this.formatDate(endDate);
-//     var index1 = "";
-//     this.variable.entries.forEach(
-//       function(entry) {
-//         if (entry.created_at == formattedStartDate) {
-//           index1 = this.variable.indexOf(entry);
-//         }
-//       }.bind(this)
-//     );
-//     console.log(formattedEndDate);
-//     console.log(index1);
-//   },
-// };
 </script>
