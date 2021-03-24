@@ -39,6 +39,13 @@
       </div>
     </section>
     <!-- End Heading -->
+    <div
+      class="u-divider u-divider-solid u-divider-center g-brd-primary w-75 mx-auto g-my-80"
+    >
+      <i
+        class="fa fa-angle-down u-divider__icon g-bg-primary g-color-white rounded-circle"
+      ></i>
+    </div>
     <!-- Team Blocks -->
     <section class="container g-pt-100 g-pb-70">
       <div class="row justify-content-center g-mb-60">
@@ -260,7 +267,6 @@
     >
       <i class="hs-icon hs-icon-arrow-top"></i>
     </a>
-    <router-link to="/signup">Signup</router-link>
   </div>
 </template>
 

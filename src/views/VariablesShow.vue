@@ -8,6 +8,7 @@
         </h2>
       </div>
     </section>
+    <br />
     <!-- breadcrumbs -->
 
     <!-- my code -->
@@ -51,19 +52,21 @@
         </div>
       </div>
     </div>
+    <br />
     <div>
       <highcharts class="hc" :options="chartOptions" ref="chart"></highcharts>
     </div>
-
     <div>
-      <label>Start Date:</label>
-      <input type="text" v-model="startDate" />
-      <br />
-    </div>
-    <div>
-      <label>End date:</label>
-      <input type="text" v-model="endDate" />
-      <br />
+      <div>
+        <label>Start Date:</label>
+        <input type="text" v-model="startDate" />
+        <br />
+      </div>
+      <div>
+        <label>End Date:</label>
+        <input type="text" v-model="endDate" />
+        <br />
+      </div>
     </div>
     <button
       class="btn btn-md u-btn-primary g-mr-10 g-mb-15"

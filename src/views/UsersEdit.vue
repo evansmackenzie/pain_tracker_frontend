@@ -171,9 +171,11 @@ export default {
       ) {
         axios.delete(`/api/users/${this.$route.params.id}`).then((response) => {
           console.log(response.data);
-          this.$router.push("/");
         });
       }
+      delete axios.defaults.headers.common["Authorization"];
+      localStorage.removeItem("jwt");
+      this.$router.push("/");
     },
   },
 };

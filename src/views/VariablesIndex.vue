@@ -4,7 +4,7 @@
     <section class="g-bg-gray-light-v5 g-py-40">
       <div class="container text-center">
         <h2 class="h2 g-color-primary g-font-size-40 g-font-weight-600">
-          Your Variables Chart
+          Your Variable Tracking
         </h2>
       </div>
     </section>
@@ -15,40 +15,40 @@
       <div class="row g-mb-50">
         <div class="col-md-8 g-mb-30">
           <div class="mb-5">
-            <h2 class="g-color-black mb-1">Variable Data</h2>
+            <h2 class="g-color-black mb-1">Visualizing Your Data</h2>
             <span class="d-block lead mb-4"
-              >Why Keeping Track of Your Symptoms Matters</span
+              >How to Show Your Data on the Graph</span
             >
             <p>
-              This is where we sit down, grab a cup of coffee and dial in the
-              details. Understanding the task at hand and ironing out the
-              wrinkles is key. Whether through commerce or just an experience to
-              tell your brand's story, the time has come to start using
-              development languages that fit your projects needs.
+              This is where you will keep track of all of the data that you are
+              entering every day. On this page, you will see all of your
+              "ratings" charted in comparison to each other. You can add each
+              variable individually so that you can compare whatever variables
+              you want, or you can add them all to the graph at once. The graph
+              automatically shows a 2 week snapshot that is two weeks back from
+              the current day to the present, but you can see any two week
+              snapshot by entering a new starting date in the date search below.
             </p>
             <p>
-              Whether through commerce or just an experience to tell your
-              brand's story, the time has come to start using development
-              languages that fit your projects needs. The time has come to bring
-              those ideas and plans to life. This is where we really begin to
-              visualize your napkin sketches and make them into beautiful
-              pixels. We get it, you're busy and it's important that someone
-              keeps up with marketing and driving people to your brand. We've
-              got you covered. Working together on the daily requires each
-              individual to let the greater good of the team’s work surface
-              above their own ego.
+              To see the actual "values" of the variables that you have been
+              keeping track of, you can click on the "more info" button for that
+              variable, which will take you to a page that shows a graph of only
+              that variable with its' "values" and "ratings". From there, you
+              can edit an entry by searching by the date you made it, as well as
+              see any snapshot of dates by entering a starting and ending date.
             </p>
-
-            <div>
-              <label>Date Search:</label>
-              <input type="text" v-model="newFinalDate" />
+            <div class="row justify-content-center">
+              <div>
+                <label>Date Search:</label>
+                <input type="text" v-model="newFinalDate" />
+              </div>
+              <button
+                class="btn btn-sm u-btn-primary g-mr-10 g-mb-15"
+                v-on:click="generateXAxisCategories(newFinalDate)"
+              >
+                Search
+              </button>
             </div>
-            <button
-              class="btn btn-sm u-btn-primary g-mr-10 g-mb-15"
-              v-on:click="generateXAxisCategories(newFinalDate)"
-            >
-              Search
-            </button>
           </div>
         </div>
 
