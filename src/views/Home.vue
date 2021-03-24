@@ -42,9 +42,7 @@
     <div
       class="u-divider u-divider-solid u-divider-center g-brd-primary w-75 mx-auto g-my-80"
     >
-      <i
-        class="fa fa-angle-down u-divider__icon g-bg-primary g-color-white rounded-circle"
-      ></i>
+      <i class="fa fa-circle u-divider__icon g-bg-white g-color-primary"></i>
     </div>
     <!-- Team Blocks -->
     <section class="container g-pt-100 g-pb-70">

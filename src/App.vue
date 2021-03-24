@@ -3,7 +3,7 @@
     <header id="js-header" class="u-header u-header--static">
       <div
         class="u-header__section u-header__section--light g-transition-0_3 g-py-10"
-        style="background-size: cover; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMJvaam7E9aCBymeeQJyxseUA1D5pSsKCyhQ&usqp=CAU');"
+        style="background-color: #F0F8F1; "
       >
         <nav
           class="js-mega-menu navbar navbar-expand-lg hs-menu-initialized hs-menu-horizontal"

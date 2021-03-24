@@ -144,7 +144,7 @@
                     things that affect your pain. You can create your variables
                     here, and then all of the variables you create will be
                     displayed on this page. For each variable, you will track a
-                    "value" and a "rating". A rating is a number from 1-10, and
+                    "value" and a "rating". A rating is a number from 0-10, and
                     is meant to reflect how you feel about how you did on a
                     current variable for that day. The value is the actual
                     amount of whatever that variable is. To make things a bit
