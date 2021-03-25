@@ -60,7 +60,7 @@
               Depending on what your pain source is, you may have some different
               activities or behaviors that make your symptoms better or worse.
               Below are some examples that are generally helpful for most people
-              to keep track of, but you can add whatever variable is pertinent
+              to keep track of, but you can add whatever variable is important
               to your unique experience.
             </p>
           </div>
@@ -172,7 +172,7 @@
                 <!-- Figure Info -->
                 <div class="u-block-hover__visible g-pt-20 g-pb-15 g-y-20">
                   <h4 class="h5 g-color-black g-mb-5">
-                    Servings of Fruits and Veggies
+                    Fruits and Veggies
                   </h4>
                 </div>
                 <!-- End Info -->
